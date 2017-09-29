@@ -1,0 +1,13 @@
+# whitelist
+branches:
+  only:
+    - master
+services:
+  #Enable docker service inside travis
+  - docker
+script:
+  #build the image
+  - bash config/buildDockerImage.sh
+notifications:
+  env:
+    - $DOCKER_IMAGE_NAME="3blades/nginx"

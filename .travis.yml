@@ -10,4 +10,4 @@ script:
   - bash config/buildDockerImage.sh
 notifications:
   env:
-    - $DOCKER_IMAGE_NAME="3blades/nginx"
+    - $DOCKER_IMAGE_NAME="illumidesk/nginx"

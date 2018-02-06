@@ -8,6 +8,5 @@ services:
 script:
   #build the image
   - bash config/buildDockerImage.sh
-notifications:
-  env:
-    - $DOCKER_IMAGE_NAME="illumidesk/nginx"
+env:
+  - $DOCKER_IMAGE_NAME="illumidesk/nginx"

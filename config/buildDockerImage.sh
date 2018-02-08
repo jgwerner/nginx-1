@@ -1,10 +1,14 @@
 #!/bin/bash
+###
+###
+###
+###   Purpose:      Tag and push docker image as build number and latest. Authentication is handled in teamcity.
+###   Author:       Josh Starrett (jstarrett@3blades.io)
+###
+### ######################################### ###
 
-if [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
-	docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-	docker build --no-cache -t $DOCKER_IMAGE_NAME .;
-	docker tag $DOCKER_IMAGE_NAME $DOCKER_IMAGE_NAME:build-$TRAVIS_BUILD_NUMBER;
-	docker tag $DOCKER_IMAGE_NAME $DOCKER_IMAGE_NAME:latest;
-	docker push $DOCKER_IMAGE_NAME:build-$TRAVIS_BUILD_NUMBER;
-	docker push $DOCKER_IMAGE_NAME:latest;
-fi
+docker build --no-cache -t $DOCKER_IMAGE_NAME .;
+docker tag $DOCKER_IMAGE_NAME $DOCKER_IMAGE_NAME:build-$DOCKER_IMG_NUMBER;
+docker tag $DOCKER_IMAGE_NAME $DOCKER_IMAGE_NAME:latest;
+docker push $DOCKER_IMAGE_NAME:build-$DOCKER_IMG_NUMBER;
+docker push $DOCKER_IMAGE_NAME:latest;
